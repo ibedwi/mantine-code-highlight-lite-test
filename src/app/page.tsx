@@ -1,95 +1,72 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client";
+
+// Using ES6 import syntax
+// import hljs from "highlight.js/lib/core";
+// import javascript from "highlight.js/lib/languages/javascript";
+
+// Then register the languages you need
+// hljs.registerLanguage("javascript", javascript);
+
+// import { CodeHighlight } from "@mantine/code-highlight";
+
+const exampleCode = `
+// VisuallyHidden component source code
+import React from 'react';
+import {
+  Box,
+  BoxProps,
+  StylesApiProps,
+  factory,
+  ElementProps,
+  useProps,
+  useStyles,
+  Factory,
+} from '../../core';
+import classes from './VisuallyHidden.module.css';
+
+export type VisuallyHiddenStylesNames = 'root';
+
+export interface VisuallyHiddenProps
+  extends BoxProps,
+    StylesApiProps<VisuallyHiddenFactory>,
+    ElementProps<'div'> {}
+
+export type VisuallyHiddenFactory = Factory<{
+  props: VisuallyHiddenProps;
+  ref: HTMLDivElement;
+  stylesNames: VisuallyHiddenStylesNames;
+}>;
+
+const defaultProps: Partial<VisuallyHiddenProps> = {};
+
+export const VisuallyHidden = factory<VisuallyHiddenFactory>((_props, ref) => {
+  const props = useProps('VisuallyHidden', defaultProps, _props);
+  const { classNames, className, style, styles, unstyled, vars, ...others } = props;
+
+  const getStyles = useStyles<VisuallyHiddenFactory>({
+    name: 'VisuallyHidden',
+    classes,
+    props,
+    className,
+    style,
+    classNames,
+    styles,
+    unstyled,
+  });
+
+  return <Box component="span" ref={ref} {...getStyles('root')} {...others} />;
+});
+
+VisuallyHidden.classes = classes;
+VisuallyHidden.displayName = '@mantine/core/VisuallyHidden';
+`;
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    <div style={{ maxWidth: 1000, padding: 10 }}>
+      aaaaaa
+      {/* <CodeHighlight code={exampleCode} /> */}
+      {/* <CodeHighlight code={exampleCode} language="javascript" /> */}
+    </div>
+  );
 }
