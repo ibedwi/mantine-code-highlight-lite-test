@@ -1,13 +1,19 @@
 "use client";
 
-// Using ES6 import syntax
-// import hljs from "highlight.js/lib/core";
-// import javascript from "highlight.js/lib/languages/javascript";
-
-// Then register the languages you need
-// hljs.registerLanguage("javascript", javascript);
-
-// import { CodeHighlight } from "@mantine/code-highlight";
+import { CodeHighlight, HighlightProvider } from "@mantine/code-highlight-lite";
+import hljs from "highlight.js/lib/core";
+hljs.registerLanguage(
+  "plaintext",
+  require("highlight.js/lib/languages/plaintext")
+);
+hljs.registerLanguage(
+  "javascript",
+  require("highlight.js/lib/languages/javascript")
+);
+hljs.registerLanguage(
+  "typescript",
+  require("highlight.js/lib/languages/typescript")
+);
 
 const exampleCode = `
 // VisuallyHidden component source code
@@ -63,10 +69,11 @@ VisuallyHidden.displayName = '@mantine/core/VisuallyHidden';
 
 export default function Home() {
   return (
-    <div style={{ maxWidth: 1000, padding: 10 }}>
-      aaaaaa
-      {/* <CodeHighlight code={exampleCode} /> */}
-      {/* <CodeHighlight code={exampleCode} language="javascript" /> */}
-    </div>
+    <HighlightProvider highlightInstance={hljs}>
+      <div style={{ maxWidth: 1000, padding: 10 }}>
+        aaaaaa
+        <CodeHighlight code={exampleCode} language="typescript" />
+      </div>
+    </HighlightProvider>
   );
 }
