@@ -69,9 +69,8 @@ VisuallyHidden.displayName = '@mantine/core/VisuallyHidden';
 
 export default function Home() {
   return (
-    <HighlightProvider highlightInstance={hljs}>
+    <HighlightProvider hljsInstance={hljs}>
       <div style={{ maxWidth: 1000, padding: 10 }}>
-        aaaaaa
         <CodeHighlight code={exampleCode} language="typescript" />
       </div>
     </HighlightProvider>
